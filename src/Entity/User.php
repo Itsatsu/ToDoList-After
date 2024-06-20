@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
@@ -20,6 +21,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 180)]
+    #[Assert\NotBlank(message: 'Please enter an email')]
+    #[Assert\Email(message: 'The email "{{ value }}" is not a valid email.')]
+    #[Assert\Length(
+        min: 2,
+        max: 180,
+    )]
     private ?string $email = null;
 
     /**
@@ -32,12 +39,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string Mot de passe hashé
      */
     #[ORM\Column]
+    #[Assert\Length(
+        min: 6,
+        max: 4096,
+    )]
     private ?string $password = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank(message: 'Please enter a firstname')]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+    )]
     private ?string $firstname = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotBlank(message: 'Please enter a lastname')]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+    )]
     private ?string $lastname = null;
 
     #[ORM\Column]
