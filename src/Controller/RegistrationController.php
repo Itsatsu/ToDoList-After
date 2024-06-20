@@ -66,15 +66,15 @@ class RegistrationController extends AbstractController
     {
         $id = $request->query->get('id');
 
-        if (null === $id || $userRepository->find($id) === null) {
+        if (null === $id) {
             return $this->redirectToRoute('app_register');
         }
 
-//        $user = $userRepository->find($id);
-//
-//        if (null === $user) {
-//            return $this->redirectToRoute('app_register');
-//        }
+        $user = $userRepository->find($id);
+
+        if (null === $user) {
+            return $this->redirectToRoute('app_register');
+        }
 
         // validate email confirmation link, sets User::isVerified=true and persists
         try {
@@ -87,6 +87,6 @@ class RegistrationController extends AbstractController
 
         $this->addFlash('success', 'Votre email à bien été vérifié');
 
-        return $this->redirectToRoute('app_register');
+        return $this->redirectToRoute('app_home');
     }
 }
