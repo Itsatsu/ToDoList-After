@@ -25,8 +25,17 @@
     {% block full_body_header %}{% endblock %}
 
     <div class="container py-4 px-3 mx-auto">
-        <div class="mb-5w">
-
+        <div class="fr-mb-5w">
+            {% for type, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ type }} d-flex justify-content-between mb-0">
+                        <p class="mb-0">{{ message }}</p>
+                        <button class="btn-close btn" title="Masquer le message"
+                                onclick="const alert = this.parentNode; alert.parentNode.removeChild(alert)">
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endfor %}
         </div>
         {% block body %}{% endblock %}
     </div>

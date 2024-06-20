@@ -16,10 +16,11 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
+use function Symfony\Component\Translation\t;
 
 class RegistrationController extends AbstractController
 {
-    public function __construct(private EmailVerifier $emailVerifier)
+    public function __construct(private readonly EmailVerifier $emailVerifier)
     {
     }
 
@@ -47,12 +48,12 @@ class RegistrationController extends AbstractController
                 (new TemplatedEmail())
                     ->from(new Address('ne-pas-repondre@todoco.fr', 'ToDo&Co'))
                     ->to($user->getEmail())
-                    ->subject('Please Confirm your Email')
+                    ->subject(t('mail.register.subject'))
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
 
             // do anything else you need here, like send an email
-
+            $this->addFlash('success', t('flash.success.registered'));
             return $this->redirectToRoute('app_home');
         }
 
@@ -66,15 +67,11 @@ class RegistrationController extends AbstractController
     {
         $id = $request->query->get('id');
 
-        if (null === $id) {
+        if (null === $id || $userRepository->find($id) === null){
+            $this->addFlash('error', t('flash.error.not_found'));
             return $this->redirectToRoute('app_register');
         }
-
         $user = $userRepository->find($id);
-
-        if (null === $user) {
-            return $this->redirectToRoute('app_register');
-        }
 
         // validate email confirmation link, sets User::isVerified=true and persists
         try {
@@ -85,7 +82,7 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('app_register');
         }
 
-        $this->addFlash('success', 'Votre email à bien été vérifié');
+        $this->addFlash('success', t('flash.success.email_verified'));
 
         return $this->redirectToRoute('app_home');
     }
