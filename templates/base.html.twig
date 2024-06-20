@@ -16,10 +16,25 @@
     {% endblock %}
 </head>
 <body>
-{{ include('navbar.html.twig') }}
-<div class="container py-4 px-3 mx-auto">
-    {% block body %}
-    {% endblock %}
-</div>
+<header>
+    {{ include('navbar.html.twig') }}
+</header>
+
+<main role="main" id="content">
+    {# permet au besoin d'afficher le contenu sur 100% de la largeur #}
+    {% block full_body_header %}{% endblock %}
+
+    <div class="container py-4 px-3 mx-auto">
+        <div class="mb-5w">
+
+        </div>
+        {% block body %}{% endblock %}
+    </div>
+    {# permet au besoin d'afficher le contenu sur 100% de la largeur #}
+    {% block full_body %}{% endblock %}
+</main>
+<footer>
+    {{ include('footer.html.twig') }}
+</footer>
 </body>
 </html>
