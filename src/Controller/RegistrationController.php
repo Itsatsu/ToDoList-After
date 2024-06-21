@@ -20,16 +20,23 @@ use function Symfony\Component\Translation\t;
 
 class RegistrationController extends AbstractController
 {
+
+
+    #Injection de dépendance de la classe EmailVerifier
     public function __construct(private readonly EmailVerifier $emailVerifier)
     {
-    }
 
+
+    } //end__construct()
+
+
+    # Route pour l'inscription
     #[Route('/rejoindre', name: 'app_register')]
     public function register(
-        Request $request,
+        Request                     $request,
         UserPasswordHasherInterface $userPasswordHasher,
-        EntityManagerInterface $entityManager,
-        TranslatorInterface $translator
+        EntityManagerInterface      $entityManager,
+        TranslatorInterface         $translator
     ): Response
     {
         $user = new User();
@@ -67,21 +74,24 @@ class RegistrationController extends AbstractController
         ]);
     }
 
+
+    # Route pour la vérification de l'email
     #[Route('/verification/email', name: 'app_verify_email')]
     public function verifyUserEmail(
-        Request $request,
+        Request             $request,
         TranslatorInterface $translator,
-        UserRepository $userRepository): Response
+        UserRepository      $userRepository): Response
     {
         $id = $request->query->get('id');
 
-        if (null === $id || $userRepository->find($id) === null){
-            $this->addFlash('error',t('flash.error.not_found'));
+        if (null === $id || $userRepository->find($id) === null) {
+            $this->addFlash('error', t('flash.error.not_found'));
             return $this->redirectToRoute('app_register');
+
         }
         $user = $userRepository->find($id);
 
-        // validate email confirmation link, sets User::isVerified=true and persists
+        // Validate email confirmation link, sets User::isVerified=true and persists
         try {
             $this->emailVerifier->handleEmailConfirmation($request, $user);
         } catch (VerifyEmailExceptionInterface $exception) {
