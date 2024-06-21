@@ -1,11 +1,11 @@
-<h1>Bonjour, Merci de nous rejoindre !</h1>
+<h1>{{  'email.confirm.title' | trans}}</h1>
 
 <p>
-    Pour finir ton inscription, il ne te reste plus qu'à cliquer sur le lien suivant : <br><br>
-    <a href="{{ signedUrl|raw }}">Confirmer mon email</a>.
-    Ce lien expire dans {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
+   {{ 'email.confirm.1' | trans}}  <br><br>
+    <a href="{{ signedUrl|raw }}">{{ 'email.confirm.button' | trans }}</a>.
+    {{ 'email.confirm.expiration' | trans }} {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
 </p>
 
 <p>
-    A tout de suite !
+    {{ 'email.confirm.end'  | trans}}
 </p>

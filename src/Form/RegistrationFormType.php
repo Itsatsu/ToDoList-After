@@ -22,7 +22,7 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class,[
-                'label'=> t('form.register.email')
+                'label'=> t('email')
             ])
             ->add('firstname',TextType::class,[
                 'label'=> t('form.register.firstname')
@@ -33,7 +33,7 @@ class RegistrationFormType extends AbstractType
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
-                'label' => t('form.register.password'),
+                'label' => t('password'),
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [

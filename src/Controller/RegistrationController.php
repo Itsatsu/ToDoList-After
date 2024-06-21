@@ -40,6 +40,10 @@ class RegistrationController extends AbstractController
         TranslatorInterface         $translator
     ): Response
     {
+        if ($this->getUser()) {
+            $this->addFlash('info', t('already_logged_in'));
+            return $this->redirectToRoute('app_home');
+        }
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
@@ -84,6 +88,10 @@ class RegistrationController extends AbstractController
         TranslatorInterface $translator,
         UserRepository      $userRepository): Response
     {
+        if ($this->getUser()) {
+            $this->addFlash('info', t('already_logged_in'));
+            return $this->redirectToRoute('app_home');
+        }
         $idUser = $request->query->get('id');
 
         if (null === $idUser || $userRepository->find($idUser) === null) {

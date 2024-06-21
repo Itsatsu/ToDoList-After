@@ -1,7 +1,7 @@
-form.register.email: Email
+email: Email
 form.register.firstname: Prénom
 form.register.lastname: Nom
-form.register.password: 'Mot de passe'
+password: 'Mot de passe'
 form.register.submit: 'Créer mon compte'
 mail.register.subject: 'Confirmez votre adresse email'
 flash.success.registered: 'Votre compte a bien été créé. Un email de confirmation vous a été envoyé'
@@ -9,5 +9,15 @@ flash.error.not_found: 'Le lien de confirmation est invalide ou a expiré'
 flash.success.email_verified: 'Votre adresse email a bien été vérifié'
 nav.home.link: Accueil
 nav.profile.link: Profil
-nav.logout.link: Déconnexion
+logout: Déconnexion
 nav.login_register.link: 'Connexion / Inscription'
+email.confirm.title: 'Confirmez votre adresse email'
+email.confirm.1: 'Pour confirmer votre adresse email, cliquez sur le bouton ci-dessous'
+email.confirm.button: 'Confirmer mon adresse email'
+email.confirm.expiration: 'Ce lien expirera dans '
+email.confirm.end: 'A bientôt !'
+signin: Connexion
+signin.button: 'Se connecter'
+register: Inscription
+CheckVerifiedUserListener.not_verified_user: "Votre compte n'est pas vérifié. Veuillez vérifier votre adresse email."
+already_logged_in: 'Vous êtes déjà connecté'

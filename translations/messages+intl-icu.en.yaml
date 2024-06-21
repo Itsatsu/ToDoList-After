@@ -2,12 +2,23 @@ mail.register.subject: 'Confirm your email address'
 flash.success.registered: 'Your account has been created. A confirmation email has been sent to you'
 flash.error.not_found: 'The confirmation link is invalid or has expired'
 flash.success.email_verified: 'Your email address has been verified'
-form.register.email: 'Email'
 form.register.firstname: 'First name'
 form.register.lastname: 'Last name'
-form.register.password: 'Password'
 form.register.submit: 'Create my account'
 nav.home.link: Home
 nav.profile.link: Profile
-nav.logout.link: Logout
+logout: Logout
 nav.login_register.link: 'Login / Register'
+email.confirm.title: 'Confirm your email address'
+email.confirm.1: 'To confirm your email address, click on the button below'
+email.confirm.button: 'Confirm my email address'
+email.confirm.expiration: 'This link will expire in '
+email.confirm.end: 'See you soon!'
+signin: 'Sign in'
+login: Login
+email: Email
+password: Password
+signin.button: 'Sign in'
+register: Register
+CheckVerifiedUserListener.not_verified_user: 'Your account is not verified. Please check your email address.'
+already_logged_in: 'You are already logged in'
