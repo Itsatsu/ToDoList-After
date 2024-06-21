@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    <h1>Créer mon compte</h1>
+
+    {{ form_errors(registrationForm) }}
+
+    {{ form_start(registrationForm) }}
+    <div class="row">
+        <div class="col-12 col-md-6">
+            {{ form_row(registrationForm.firstname) }}
+        </div>
+        <div class="col-12 col-md-6">
+            {{ form_row(registrationForm.lastname) }}
+        </div>
+    </div>
+    {{ form_row(registrationForm.email) }}
+    {{ form_row(registrationForm.plainPassword) }}
+    <div class="d-flex justify-content-around">
+        {{ form_row(registrationForm.submit) }}
+    </div>
+    {{ form_end(registrationForm) }}
+{% endblock %}
