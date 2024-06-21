@@ -25,7 +25,12 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/rejoindre', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    public function register(
+        Request $request,
+        UserPasswordHasherInterface $userPasswordHasher,
+        EntityManagerInterface $entityManager,
+        TranslatorInterface $translator
+    ): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -48,12 +53,12 @@ class RegistrationController extends AbstractController
                 (new TemplatedEmail())
                     ->from(new Address('ne-pas-repondre@todoco.fr', 'ToDo&Co'))
                     ->to($user->getEmail())
-                    ->subject(t('mail.register.subject'))
+                    ->subject($translator->trans(t('mail.register.subject')))
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
 
             // do anything else you need here, like send an email
-            $this->addFlash('success', t('flash.success.registered'));
+            $this->addFlash('success', $translator->trans(t('flash.success.registered')));
             return $this->redirectToRoute('app_home');
         }
 
@@ -63,12 +68,15 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/verification/email', name: 'app_verify_email')]
-    public function verifyUserEmail(Request $request, TranslatorInterface $translator, UserRepository $userRepository): Response
+    public function verifyUserEmail(
+        Request $request,
+        TranslatorInterface $translator,
+        UserRepository $userRepository): Response
     {
         $id = $request->query->get('id');
 
         if (null === $id || $userRepository->find($id) === null){
-            $this->addFlash('error', t('flash.error.not_found'));
+            $this->addFlash('error',t('flash.error.not_found'));
             return $this->redirectToRoute('app_register');
         }
         $user = $userRepository->find($id);
@@ -77,7 +85,7 @@ class RegistrationController extends AbstractController
         try {
             $this->emailVerifier->handleEmailConfirmation($request, $user);
         } catch (VerifyEmailExceptionInterface $exception) {
-            $this->addFlash('verify_email_error', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
+            $this->addFlash('error', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
 
             return $this->redirectToRoute('app_register');
         }
