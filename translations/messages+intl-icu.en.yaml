@@ -1,0 +1,13 @@
+mail.register.subject: 'Confirm your email address'
+flash.success.registered: 'Your account has been created. A confirmation email has been sent to you'
+flash.error.not_found: 'The confirmation link is invalid or has expired'
+flash.success.email_verified: 'Your email address has been verified'
+form.register.email: 'Email'
+form.register.firstname: 'First name'
+form.register.lastname: 'Last name'
+form.register.password: 'Password'
+form.register.submit: 'Create my account'
+nav.home.link: Home
+nav.profile.link: Profile
+nav.logout.link: Logout
+nav.login_register.link: 'Login / Register'

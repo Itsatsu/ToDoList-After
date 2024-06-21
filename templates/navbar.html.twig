@@ -10,7 +10,7 @@
                 <!-- Link -->
                 <li class="nav-item ">
                     <a class="nav-link {% if app.current_route == 'app_home' %} active {% endif %} "
-                       href="{{ path('app_home') }}"><i class="fa-solid fa-home mx-1"></i> Accueil</a>
+                       href="{{ path('app_home') }}"><i class="fa-solid fa-home mx-1"></i> {{ 'nav.home.link' |trans }}</a>
                 </li>
             </ul>
 
@@ -20,18 +20,18 @@
                     <li class="nav-item me-3 me-lg-0"> {# TODO: Add profile link #}
                         <a class="nav-link " href="#">
                             <i class="fa-solid fa-user mx-1"></i>
-                            Profil</a>
+                            {{ 'nav.profile.link' |trans }}</a>
                     </li>
                     <li>
                         <a class="nav-link " href="#"> {# TODO: Add logout link #}
                             <i class="fa-solid fa-right-from-bracket mx-1"></i>
-                            Deconnexion</a>
+                            {{ 'nav.logout.link' |trans }}</a>
                     </li>
                 {% else %}
                     <li class="nav-item me-3 me-lg-0">
                         <a class="nav-link " href="{{ path('app_register') }}">
                             <i class="fa-solid fa-right-to-bracket mx-1"></i>
-                            Connexion / Inscription</a>
+                            {{ 'nav.login_register.link' |trans }}</a>
                     </li>
                 {% endif %}
             </ul>

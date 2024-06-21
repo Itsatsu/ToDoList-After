@@ -7,3 +7,7 @@ mail.register.subject: 'Confirmez votre adresse email'
 flash.success.registered: 'Votre compte a bien été créé. Un email de confirmation vous a été envoyé'
 flash.error.not_found: 'Le lien de confirmation est invalide ou a expiré'
 flash.success.email_verified: 'Votre adresse email a bien été vérifié'
+nav.home.link: Accueil
+nav.profile.link: Profil
+nav.logout.link: Déconnexion
+nav.login_register.link: 'Connexion / Inscription'

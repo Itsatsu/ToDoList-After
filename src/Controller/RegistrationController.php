@@ -84,14 +84,14 @@ class RegistrationController extends AbstractController
         TranslatorInterface $translator,
         UserRepository      $userRepository): Response
     {
-        $id = $request->query->get('id');
+        $idUser = $request->query->get('id');
 
-        if (null === $id || $userRepository->find($id) === null) {
+        if (null === $idUser || $userRepository->find($idUser) === null) {
             $this->addFlash('error', t('flash.error.not_found'));
             return $this->redirectToRoute('app_register');
 
         }
-        $user = $userRepository->find($id);
+        $user = $userRepository->find($idUser);
 
         // Validate email confirmation link, sets User::isVerified=true and persists
         try {
