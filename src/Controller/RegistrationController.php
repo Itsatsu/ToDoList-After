@@ -22,16 +22,17 @@ class RegistrationController extends AbstractController
 {
 
 
-    #Injection de dépendance de la classe EmailVerifier
+    //Injection de dépendance de la classe EmailVerifier
     public function __construct(private readonly EmailVerifier $emailVerifier)
     {
 
+    } //end __construct()
 
-    } //end__construct()
+
+    // Route pour l'inscription
+    #[Route('/inscription', name: 'app_register')]
 
 
-    # Route pour l'inscription
-    #[Route('/rejoindre', name: 'app_register')]
     public function register(
         Request                     $request,
         UserPasswordHasherInterface $userPasswordHasher,
@@ -44,7 +45,7 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
+            // Encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
@@ -55,16 +56,15 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // generate a signed url and email it to the user
+            // Generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())
                     ->from(new Address('ne-pas-repondre@todoco.fr', 'ToDo&Co'))
                     ->to($user->getEmail())
                     ->subject($translator->trans(t('mail.register.subject')))
-                    ->htmlTemplate('registration/confirmation_email.html.twig')
-            );
+                    ->htmlTemplate('registration/confirmation_email.html.twig'));
 
-            // do anything else you need here, like send an email
+            // Do anything else you need here, like send an email
             $this->addFlash('success', $translator->trans(t('flash.success.registered')));
             return $this->redirectToRoute('app_home');
         }
@@ -75,8 +75,10 @@ class RegistrationController extends AbstractController
     }
 
 
-    # Route pour la vérification de l'email
+    // Route pour la vérification de l'email
     #[Route('/verification/email', name: 'app_verify_email')]
+
+
     public function verifyUserEmail(
         Request             $request,
         TranslatorInterface $translator,
