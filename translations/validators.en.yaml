@@ -148,3 +148,4 @@ Error: Error
 'Please enter a lastname': '__Please enter a lastname'
 'Please enter a password': '__Please enter a password'
 'Your password should be at least {{ limit }} characters': '__Your password should be at least {{ limit }} characters'
+'Please enter your email': '__Please enter your email'

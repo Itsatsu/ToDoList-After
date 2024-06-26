@@ -23,13 +23,13 @@
                             {{ 'nav.profile.link' |trans }}</a>
                     </li>
                     <li>
-                        <a class="nav-link " href="#"> {# TODO: Add logout link #}
+                        <a class="nav-link " href="{{ path('app_logout') }}">
                             <i class="fa-solid fa-right-from-bracket mx-1"></i>
-                            {{ 'nav.logout.link' |trans }}</a>
+                            {{ 'logout' |trans }}</a>
                     </li>
                 {% else %}
                     <li class="nav-item me-3 me-lg-0">
-                        <a class="nav-link " href="{{ path('app_register') }}">
+                        <a class="nav-link " href="{{ path('app_login') }}">
                             <i class="fa-solid fa-right-to-bracket mx-1"></i>
                             {{ 'nav.login_register.link' |trans }}</a>
                     </li>

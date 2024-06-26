@@ -155,3 +155,4 @@ Error: Erreur
 'Please enter a lastname': 'Veuillez entrer un nom'
 'Your lastname should be at least {{ limit }} characters': 'Votre nom doit contenir au moins {{ limit }} caractères'
 'Your lastname should be at most {{ limit }} characters': 'Votre nom doit contenir au maximum {{ limit }} caractères'
+'Please enter your email': '__Please enter your email'
