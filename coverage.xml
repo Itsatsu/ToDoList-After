@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1719431542">
-  <project timestamp="1719431542">
+<coverage generated="1719432572">
+  <project timestamp="1719432572">
     <file name="C:\laragon\www\ToDoList-After\src\Controller\HomeController.php">
       <class name="App\Controller\HomeController" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
@@ -158,16 +158,16 @@
     </file>
     <file name="C:\laragon\www\ToDoList-After\src\Entity\ResetPasswordRequest.php">
       <class name="App\Entity\ResetPasswordRequest" namespace="global">
-        <metrics complexity="3" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="2" elements="7" coveredelements="3"/>
+        <metrics complexity="3" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="3" elements="7" coveredelements="5"/>
       </class>
-      <line num="24" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="26" type="stmt" count="1"/>
-      <line num="27" type="stmt" count="1"/>
+      <line num="24" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="26" type="stmt" count="2"/>
+      <line num="27" type="stmt" count="2"/>
       <line num="30" type="method" name="getId" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="32" type="stmt" count="0"/>
-      <line num="35" type="method" name="getUser" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="37" type="stmt" count="0"/>
-      <metrics loc="40" ncloc="40" classes="1" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="2" elements="7" coveredelements="3"/>
+      <line num="35" type="method" name="getUser" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="37" type="stmt" count="1"/>
+      <metrics loc="40" ncloc="40" classes="1" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="3" elements="7" coveredelements="5"/>
     </file>
     <file name="C:\laragon\www\ToDoList-After\src\Entity\Task.php">
       <class name="App\Entity\Task" namespace="global">
@@ -211,15 +211,15 @@
       <class name="App\Entity\User" namespace="global">
         <metrics complexity="24" methods="21" coveredmethods="16" conditionals="0" coveredconditionals="0" statements="35" coveredstatements="23" elements="56" coveredelements="39"/>
       </class>
-      <line num="78" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="3"/>
-      <line num="80" type="stmt" count="3"/>
+      <line num="78" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="4"/>
+      <line num="80" type="stmt" count="4"/>
       <line num="83" type="method" name="getId" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="85" type="stmt" count="1"/>
       <line num="88" type="method" name="getEmail" visibility="public" complexity="1" crap="1" count="2"/>
       <line num="90" type="stmt" count="2"/>
-      <line num="93" type="method" name="setEmail" visibility="public" complexity="1" crap="1" count="3"/>
-      <line num="95" type="stmt" count="3"/>
-      <line num="97" type="stmt" count="3"/>
+      <line num="93" type="method" name="setEmail" visibility="public" complexity="1" crap="1" count="4"/>
+      <line num="95" type="stmt" count="4"/>
+      <line num="97" type="stmt" count="4"/>
       <line num="105" type="method" name="getUserIdentifier" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="107" type="stmt" count="1"/>
       <line num="115" type="method" name="getRoles" visibility="public" complexity="1" crap="1" count="1"/>
@@ -231,21 +231,21 @@
       <line num="131" type="stmt" count="0"/>
       <line num="137" type="method" name="getPassword" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="139" type="stmt" count="1"/>
-      <line num="142" type="method" name="setPassword" visibility="public" complexity="1" crap="1" count="3"/>
-      <line num="144" type="stmt" count="3"/>
-      <line num="146" type="stmt" count="3"/>
+      <line num="142" type="method" name="setPassword" visibility="public" complexity="1" crap="1" count="4"/>
+      <line num="144" type="stmt" count="4"/>
+      <line num="146" type="stmt" count="4"/>
       <line num="152" type="method" name="eraseCredentials" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="156" type="stmt" count="1"/>
       <line num="158" type="method" name="getFirstname" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="160" type="stmt" count="1"/>
-      <line num="163" type="method" name="setFirstname" visibility="public" complexity="1" crap="1" count="3"/>
-      <line num="165" type="stmt" count="3"/>
-      <line num="167" type="stmt" count="3"/>
+      <line num="163" type="method" name="setFirstname" visibility="public" complexity="1" crap="1" count="4"/>
+      <line num="165" type="stmt" count="4"/>
+      <line num="167" type="stmt" count="4"/>
       <line num="170" type="method" name="getLastname" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="172" type="stmt" count="1"/>
-      <line num="175" type="method" name="setLastname" visibility="public" complexity="1" crap="1" count="3"/>
-      <line num="177" type="stmt" count="3"/>
-      <line num="179" type="stmt" count="3"/>
+      <line num="175" type="method" name="setLastname" visibility="public" complexity="1" crap="1" count="4"/>
+      <line num="177" type="stmt" count="4"/>
+      <line num="179" type="stmt" count="4"/>
       <line num="182" type="method" name="isVerified" visibility="public" complexity="1" crap="1" count="2"/>
       <line num="184" type="stmt" count="2"/>
       <line num="187" type="method" name="setVerified" visibility="public" complexity="1" crap="1" count="1"/>
@@ -457,6 +457,6 @@
       <line num="51" type="stmt" count="0"/>
       <metrics loc="54" ncloc="51" classes="1" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="7" elements="20" coveredelements="8"/>
     </file>
-    <metrics files="17" loc="1148" ncloc="1009" classes="16" methods="64" coveredmethods="31" conditionals="0" coveredconditionals="0" statements="290" coveredstatements="151" elements="354" coveredelements="182"/>
+    <metrics files="17" loc="1148" ncloc="1009" classes="16" methods="64" coveredmethods="32" conditionals="0" coveredconditionals="0" statements="290" coveredstatements="152" elements="354" coveredelements="184"/>
   </project>
 </coverage>
