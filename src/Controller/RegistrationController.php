@@ -31,8 +31,6 @@ class RegistrationController extends AbstractController
 
     // Route pour l'inscription
     #[Route('/inscription', name: 'app_register')]
-
-
     public function register(
         Request                     $request,
         UserPasswordHasherInterface $userPasswordHasher,
@@ -81,8 +79,6 @@ class RegistrationController extends AbstractController
 
     // Route pour la vérification de l'email
     #[Route('/verification/email', name: 'app_verify_email')]
-
-
     public function verifyUserEmail(
         Request             $request,
         TranslatorInterface $translator,
@@ -100,18 +96,17 @@ class RegistrationController extends AbstractController
 
         }
         $user = $userRepository->find($idUser);
-
+        $error = false;
         // Validate email confirmation link, sets User::isVerified=true and persists
         try {
             $this->emailVerifier->handleEmailConfirmation($request, $user);
         } catch (VerifyEmailExceptionInterface $exception) {
             $this->addFlash('error', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
-
-            return $this->redirectToRoute('app_register');
+            $error = true;
         }
-
-        $this->addFlash('success', t('flash.success.email_verified'));
-
-        return $this->redirectToRoute('app_home');
+        if (!$error) {
+            $this->addFlash('success', t('flash.success.email_verified'));
+        }
+        return $this->redirectToRoute('app_login');
     }
 }
