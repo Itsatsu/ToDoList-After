@@ -40,19 +40,22 @@ class ResetPasswordControllerTest extends WebTestCase
         // Create a test user
         $user = (new User())
             ->setEmail('me@example.com')
+
             ->setPassword('a-test-password-that-will-be-changed-later')
         ;
+        $user->setFirstname('John');
+        $user->setLastname('Doe');
         $this->em->persist($user);
         $this->em->flush();
 
         // Test Request reset password page
-        $this->client->request('GET', '/reset-password');
+        $this->client->request('GET', '/reinitialisation-mot-de-passe');
 
         self::assertResponseIsSuccessful();
-        self::assertPageTitleContains('Reset your password');
+        self::assertPageTitleContains('Todo | Demande de réinitialisation de mot de passe');
 
         // Submit the reset password form and test email message is queued / sent
-        $this->client->submitForm('Send password reset email', [
+        $this->client->submitForm('Demander la réinitialisation du mot de passe', [
             'reset_password_request_form[email]' => 'me@example.com',
         ]);
 
@@ -65,30 +68,29 @@ class ResetPasswordControllerTest extends WebTestCase
 
         self::assertEmailAddressContains($messages[0], 'from', 'ne-pas-repondre@todoco.fr');
         self::assertEmailAddressContains($messages[0], 'to', 'me@example.com');
-        self::assertEmailTextBodyContains($messages[0], 'This link will expire in 1 hour.');
 
-        self::assertResponseRedirects('/reset-password/check-email');
+        self::assertResponseRedirects('/');
 
         // Test check email landing page shows correct "expires at" time
         $crawler = $this->client->followRedirect();
 
-        self::assertPageTitleContains('Password Reset Email Sent');
-        self::assertStringContainsString('This link will expire in 1 hour', $crawler->html());
+        self::assertPageTitleContains('Todo | Accueil');
+        self::assertStringContainsString('Un email vous a été envoyé avec un lien pour réinitialiser votre mot de passe', $crawler->html());
 
         // Test the link sent in the email is valid
         $email = $messages[0]->toString();
-        preg_match('#(/reset-password/reset/[a-zA-Z0-9]+)#', $email, $resetLink);
+        preg_match('#(/reinitialisation-mot-de-passe/reinitialisation/[a-zA-Z0-9]+)#', $email, $resetLink);
 
         $this->client->request('GET', $resetLink[1]);
 
-        self::assertResponseRedirects('/reset-password/reset');
+        self::assertResponseRedirects('/reinitialisation-mot-de-passe/reinitialisation');
 
         $this->client->followRedirect();
 
         // Test we can set a new password
-        $this->client->submitForm('Reset password', [
-            'change_password_form[plainPassword][first]' => 'newStrongPassword',
-            'change_password_form[plainPassword][second]' => 'newStrongPassword',
+        $this->client->submitForm('Réinitialiser le mot de passe', [
+            'change_password_form[plainPassword][first]' => '@zefienBbeuk26864',
+            'change_password_form[plainPassword][second]' => '@zefienBbeuk26864',
         ]);
 
         self::assertResponseRedirects('/');

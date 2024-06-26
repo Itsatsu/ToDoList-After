@@ -34,14 +34,15 @@ class RegistrationControllerTest extends WebTestCase
     public function testRegister(): void
     {
         // Register a new user
-        $this->client->request('GET', '/register');
+        $this->client->request('GET', '/inscription');
         self::assertResponseIsSuccessful();
-        self::assertPageTitleContains('Register');
+        self::assertPageTitleContains('Todo | Inscription');
 
-        $this->client->submitForm('Register', [
+        $this->client->submitForm('Créer mon compte', [
             'registration_form[email]' => 'me@example.com',
+            'registration_form[firstname]' => 'John',
+            'registration_form[lastname]' => 'Doe',
             'registration_form[plainPassword]' => 'password',
-            'registration_form[agreeTerms]' => true,
         ]);
 
         // Ensure the response redirects after submitting the form, the user exists, and is not verified
@@ -69,7 +70,7 @@ class RegistrationControllerTest extends WebTestCase
         $messageBody = $templatedEmail->getHtmlBody();
         self::assertIsString($messageBody);
 
-        preg_match('#(http://localhost/verify/email.+)">#', $messageBody, $resetLink);
+        preg_match('#(http://localhost:8000/verify/email.+)">#', $messageBody, $resetLink);
 
         // "Click" the link and see if the user is verified
         $this->client->request('GET', $resetLink[1]);
