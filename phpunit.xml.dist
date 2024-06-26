@@ -28,7 +28,17 @@
         <include>
             <directory suffix=".php">src</directory>
         </include>
+        <exclude>
+            <directory>assets</directory>
+            <directory>config</directory>
+            <directory>public</directory>
+            <directory>migrations</directory>
+            <file>importmap.php</file>
+            <file>postcss.config</file>
+            <file>webpack.config.js</file>
+        </exclude>
     </coverage>
+
 
     <listeners>
         <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener" />

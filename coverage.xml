@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1719425717">
-  <project timestamp="1719425717">
+<coverage generated="1719431542">
+  <project timestamp="1719431542">
     <file name="C:\laragon\www\ToDoList-After\src\Controller\HomeController.php">
       <class name="App\Controller\HomeController" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
