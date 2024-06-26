@@ -6,11 +6,11 @@
     {% for flash_error in app.flashes('reset_password_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
-    <div class="d-flex justify-content-between align-items-center ">
+    <div class="d-flex justify-content-between align-items-center flex-column flex-md-row ">
         <h1 class="">{{ 'reset_password' | trans }}</h1>
-        <div>
-            <a class="btn btn-secondary" href="{{ path('app_register') }}">{{ 'login.to.register'|trans }}</a>
-            <a class="btn btn-secondary" href="{{ path('app_login') }}">{{ 'register.to.login'|trans }}</a>
+        <div class="">
+            <a class="" href="{{ path('app_register') }}">{{ 'login.to.register'|trans }}</a>
+            <a class="" href="{{ path('app_login') }}">{{ 'register.to.login'|trans }}</a>
         </div>
     </div>
     {{ form_start(requestForm) }}
