@@ -36,11 +36,11 @@ jobs:
           bootstrap: vendor/autoload.php
           configuration: phpunit.xml.dist
           args: --coverage-text
-
+        env:
+          XDEBUG_MODE: coverage
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          XDEBUG_MODE: coverage
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
