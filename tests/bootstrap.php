@@ -17,5 +17,5 @@ passthru('php bin/console doctrine:schema:create --env=test');
 
 // remove TEST database after all tests end
 register_shutdown_function(function() {
-   // passthru('php bin/console doctrine:database:drop --env=test --force --if-exists');
+    passthru('php bin/console doctrine:database:drop --env=test --force --if-exists');
 });
