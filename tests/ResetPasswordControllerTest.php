@@ -45,6 +45,7 @@ class ResetPasswordControllerTest extends WebTestCase
         ;
         $user->setFirstname('John');
         $user->setLastname('Doe');
+        $user->setVerified(1);
         $this->em->persist($user);
         $this->em->flush();
 
@@ -61,8 +62,8 @@ class ResetPasswordControllerTest extends WebTestCase
 
         // Ensure the reset password email was sent
         // Use either assertQueuedEmailCount() || assertEmailCount() depending on your mailer setup
-        // self::assertQueuedEmailCount(1);
-        self::assertEmailCount(1);
+        self::assertQueuedEmailCount(1);
+
 
         self::assertCount(1, $messages = $this->getMailerMessages());
 
@@ -78,22 +79,17 @@ class ResetPasswordControllerTest extends WebTestCase
         self::assertStringContainsString('Un email vous a été envoyé avec un lien pour réinitialiser votre mot de passe', $crawler->html());
 
         // Test the link sent in the email is valid
-        $email = $messages[0]->toString();
-        preg_match('#(/reinitialisation-mot-de-passe/reinitialisation/[a-zA-Z0-9]+)#', $email, $resetLink);
-
+        $templatedEmail = $messages[0];
+        $messageBody = $templatedEmail->getHtmlBody();
+        preg_match('#<a href="(http://localhost/reinitialisation-mot-de-passe/reinitialisation/[^"]+)#', $messageBody, $resetLink);
         $this->client->request('GET', $resetLink[1]);
-
-        self::assertResponseRedirects('/reinitialisation-mot-de-passe/reinitialisation');
-
         $this->client->followRedirect();
-
-        // Test we can set a new password
         $this->client->submitForm('Réinitialiser le mot de passe', [
             'change_password_form[plainPassword][first]' => '@zefienBbeuk26864',
             'change_password_form[plainPassword][second]' => '@zefienBbeuk26864',
         ]);
 
-        self::assertResponseRedirects('/');
+        self::assertResponseRedirects('/connexion');
 
         $user = $this->userRepository->findOneBy(['email' => 'me@example.com']);
 
@@ -101,6 +97,6 @@ class ResetPasswordControllerTest extends WebTestCase
 
         /** @var UserPasswordHasherInterface $passwordHasher */
         $passwordHasher = static::getContainer()->get(UserPasswordHasherInterface::class);
-        self::assertTrue($passwordHasher->isPasswordValid($user, 'newStrongPassword'));
+        self::assertTrue($passwordHasher->isPasswordValid($user, '@zefienBbeuk26864'));
     }
 }

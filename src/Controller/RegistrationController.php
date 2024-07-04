@@ -91,7 +91,7 @@ class RegistrationController extends AbstractController
         $idUser = $request->query->get('id');
 
         if (null === $idUser || $userRepository->find($idUser) === null) {
-            $this->addFlash('error', t('flash.error.not_found'));
+            $this->addFlash('danger', t('flash.error.not_found'));
             return $this->redirectToRoute('app_register');
 
         }
@@ -101,7 +101,7 @@ class RegistrationController extends AbstractController
         try {
             $this->emailVerifier->handleEmailConfirmation($request, $user);
         } catch (VerifyEmailExceptionInterface $exception) {
-            $this->addFlash('error', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
+            $this->addFlash('danger', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
             $error = true;
         }
         if (!$error) {
