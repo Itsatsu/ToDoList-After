@@ -3,9 +3,12 @@
 {% block title %}New Task{% endblock %}
 
 {% block body %}
-    <h1>Create new Task</h1>
-
-    {{ include('task/_form.html.twig') }}
-
-    <a href="{{ path('app_task_index') }}">back to list</a>
+<h1>Ajouter une nouvelle tâche</h1>
+{{ form_start(form) }}
+        {{ form_widget(form) }}
+    <div class="btn-group">
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+        <a class="btn btn-danger" href="{{ path('app_task_index') }}">Annuler</a>
+    </div>
+{{ form_end(form) }}
 {% endblock %}
