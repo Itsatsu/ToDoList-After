@@ -17,12 +17,13 @@ class TaskController extends AbstractController
     #[Route('/', name: 'app_task_index', methods: ['GET'])]
     public function index(TaskRepository $taskRepository): Response
     {
+        $user = $this->getUser();
         return $this->render('task/index.html.twig', [
-            'tasks' => $taskRepository->findAll(),
+            'tasks' => $taskRepository->findBy(['user'=> $user], ['createdAt' => 'DESC']),
         ]);
     }
 
-    #[Route('/new', name: 'app_task_new', methods: ['GET', 'POST'])]
+    #[Route('/ajouter', name: 'app_task_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $task = new Task();
@@ -30,9 +31,12 @@ class TaskController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $task->setUser($this->getUser());
+            $task->setCreatedAt(new \DateTime());
+            $task->setDone(false);
             $entityManager->persist($task);
             $entityManager->flush();
-
+            $this->addFlash('success', 'La tâche a été ajoutée avec succès.');
             return $this->redirectToRoute('app_task_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -58,7 +62,7 @@ class TaskController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
-
+            $this->addFlash('success', 'La tâche a été modifiée avec succès.');
             return $this->redirectToRoute('app_task_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -74,8 +78,23 @@ class TaskController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$task->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($task);
             $entityManager->flush();
+            $this->addFlash('success', 'La tâche a été supprimée avec succès.');
         }
 
         return $this->redirectToRoute('app_task_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/{id}/validate/', name: 'app_task_validate', methods: ['POST'])]
+    public function validate(Request $request, Task $task, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->isCsrfTokenValid('validate'.$task->getId(), $request->getPayload()->getString('_token'))) {
+            $task->setDoneAt(new \DateTime());
+            $task->setDone(true);
+            $entityManager->flush();
+            $this->addFlash('success', 'La tâche a été marquée comme faite avec succès.');
+        }
+
+        return $this->redirectToRoute('app_task_index', [], Response::HTTP_SEE_OTHER);
+    }
+
 }
