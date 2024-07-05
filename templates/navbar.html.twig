@@ -12,6 +12,12 @@
                     <a class="nav-link {% if app.current_route == 'app_home' %} active {% endif %} "
                        href="{{ path('app_home') }}"><i class="fa-solid fa-home mx-1"></i> {{ 'nav.home.link' |trans }}</a>
                 </li>
+                {% if app.user %}
+                    <li class="nav-item ">
+                        <a class="nav-link {% if app.current_route == 'app_task_index' %} active {% endif %} "
+                           href="{{ path('app_task_index') }}"><i class="fa-solid fa-tasks mx-1"></i>Mes tâches</a>
+                    </li>
+                {% endif %}
             </ul>
 
             <!-- Icons -->
