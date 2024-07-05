@@ -46,17 +46,13 @@ class TaskController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_task_show', methods: ['GET'])]
-    public function show(Task $task): Response
-    {
-        return $this->render('task/show.html.twig', [
-            'task' => $task,
-        ]);
-    }
-
     #[Route('/{id}/edit', name: 'app_task_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Task $task, EntityManagerInterface $entityManager): Response
     {
+        if ($task->getUser() !== $this->getUser()) {
+            $this->addFlash('danger', 'Vous ne pouvez pas modifier une tâche qui ne vous appartient pas.');
+            return $this->redirectToRoute('app_task_index', [], Response::HTTP_SEE_OTHER);
+        }
         $form = $this->createForm(TaskType::class, $task);
         $form->handleRequest($request);
 
@@ -75,6 +71,11 @@ class TaskController extends AbstractController
     #[Route('/{id}', name: 'app_task_delete', methods: ['POST'])]
     public function delete(Request $request, Task $task, EntityManagerInterface $entityManager): Response
     {
+        if ($task->getUser() !== $this->getUser()) {
+            $this->addFlash('danger', 'Vous ne pouvez pas supprimer une tâche qui ne vous appartient pas.');
+            return $this->redirectToRoute('app_task_index', [], Response::HTTP_SEE_OTHER);
+        }
+
         if ($this->isCsrfTokenValid('delete'.$task->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($task);
             $entityManager->flush();
@@ -87,6 +88,10 @@ class TaskController extends AbstractController
     #[Route('/{id}/validate/', name: 'app_task_validate', methods: ['POST'])]
     public function validate(Request $request, Task $task, EntityManagerInterface $entityManager): Response
     {
+        if ($task->getUser() !== $this->getUser()) {
+            $this->addFlash('danger', 'Vous ne pouvez pas valider une tâche qui ne vous appartient pas.');
+            return $this->redirectToRoute('app_task_index', [], Response::HTTP_SEE_OTHER);
+        }
         if ($this->isCsrfTokenValid('validate'.$task->getId(), $request->getPayload()->getString('_token'))) {
             $task->setDoneAt(new \DateTime());
             $task->setDone(true);

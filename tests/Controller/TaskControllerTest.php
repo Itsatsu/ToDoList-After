@@ -3,16 +3,22 @@
 namespace App\Test\Controller;
 
 use App\Entity\Task;
+use App\Entity\User;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class TaskControllerTest extends WebTestCase
 {
     private KernelBrowser $client;
     private EntityManagerInterface $manager;
     private EntityRepository $repository;
+
+    private UserRepository $userRepository;
+
     private string $path = '/task/';
 
     protected function setUp(): void
@@ -20,9 +26,28 @@ class TaskControllerTest extends WebTestCase
         $this->client = static::createClient();
         $this->manager = static::getContainer()->get('doctrine')->getManager();
         $this->repository = $this->manager->getRepository(Task::class);
+        $this->userRepository = $this->manager->getRepository(User::class);
+        $container = static::getContainer();
+        // Create a User fixture
+        /** @var UserPasswordHasherInterface $passwordHasher */
+        $existingUser = $this->userRepository->findOneBy(['email' => 'bmail@example.com']);
+
+        if (!$existingUser) {
+            $passwordHasher = $container->get('security.user_password_hasher');
+            $em = $container->get('doctrine.orm.entity_manager');
+            $user = (new User())->setEmail('bmail@example.com');
+            $user->setPassword($passwordHasher->hashPassword($user, 'password'));
+            $user->setFirstname('John');
+            $user->setLastname('Doe');
+            $user->setVerified(true);
+            $em->persist($user);
+            $em->flush();
+        }
+        $this->client->loginUser($this->userRepository->findAll()[0]);
 
         foreach ($this->repository->findAll() as $object) {
             $this->manager->remove($object);
+
         }
 
         $this->manager->flush();
@@ -33,7 +58,7 @@ class TaskControllerTest extends WebTestCase
         $crawler = $this->client->request('GET', $this->path);
 
         self::assertResponseStatusCodeSame(200);
-        self::assertPageTitleContains('Task index');
+        self::assertPageTitleContains('Todo | Mes taches');
 
         // Use the $crawler to perform additional assertions e.g.
         // self::assertSame('Some text on the page', $crawler->filter('.p')->first());
@@ -41,18 +66,13 @@ class TaskControllerTest extends WebTestCase
 
     public function testNew(): void
     {
-        $this->markTestIncomplete();
-        $this->client->request('GET', sprintf('%snew', $this->path));
+        $this->client->request('GET', sprintf('%sajouter', $this->path));
 
         self::assertResponseStatusCodeSame(200);
 
-        $this->client->submitForm('Save', [
+        $this->client->submitForm('Ajouter', [
             'task[title]' => 'Testing',
             'task[content]' => 'Testing',
-            'task[createdAt]' => 'Testing',
-            'task[isDone]' => 'Testing',
-            'task[doneAt]' => 'Testing',
-            'task[user]' => 'Testing',
         ]);
 
         self::assertResponseRedirects($this->path);
@@ -60,51 +80,24 @@ class TaskControllerTest extends WebTestCase
         self::assertSame(1, $this->repository->count([]));
     }
 
-    public function testShow(): void
-    {
-        $this->markTestIncomplete();
-        $fixture = new Task();
-        $fixture->setTitle('My Title');
-        $fixture->setContent('My Title');
-        $fixture->setCreatedAt('My Title');
-        $fixture->setIsDone('My Title');
-        $fixture->setDoneAt('My Title');
-        $fixture->setUser('My Title');
-
-        $this->manager->persist($fixture);
-        $this->manager->flush();
-
-        $this->client->request('GET', sprintf('%s%s', $this->path, $fixture->getId()));
-
-        self::assertResponseStatusCodeSame(200);
-        self::assertPageTitleContains('Task');
-
-        // Use assertions to check that the properties are properly displayed.
-    }
-
     public function testEdit(): void
     {
-        $this->markTestIncomplete();
         $fixture = new Task();
         $fixture->setTitle('Value');
         $fixture->setContent('Value');
-        $fixture->setCreatedAt('Value');
-        $fixture->setIsDone('Value');
-        $fixture->setDoneAt('Value');
-        $fixture->setUser('Value');
+        $fixture->setDone(false);
+        $date = new \DateTime();
+        $fixture->setCreatedAt($date);
+        $fixture->setUser($this->userRepository->findAll()[0]);
 
         $this->manager->persist($fixture);
         $this->manager->flush();
 
         $this->client->request('GET', sprintf('%s%s/edit', $this->path, $fixture->getId()));
 
-        $this->client->submitForm('Update', [
+        $this->client->submitForm('Enregistrer', [
             'task[title]' => 'Something New',
             'task[content]' => 'Something New',
-            'task[createdAt]' => 'Something New',
-            'task[isDone]' => 'Something New',
-            'task[doneAt]' => 'Something New',
-            'task[user]' => 'Something New',
         ]);
 
         self::assertResponseRedirects('/task/');
@@ -113,30 +106,51 @@ class TaskControllerTest extends WebTestCase
 
         self::assertSame('Something New', $fixture[0]->getTitle());
         self::assertSame('Something New', $fixture[0]->getContent());
-        self::assertSame('Something New', $fixture[0]->getCreatedAt());
-        self::assertSame('Something New', $fixture[0]->getIsDone());
-        self::assertSame('Something New', $fixture[0]->getDoneAt());
-        self::assertSame('Something New', $fixture[0]->getUser());
+        self::assertSame($this->userRepository->findAll()[0], $fixture[0]->getUser());
     }
 
     public function testRemove(): void
     {
-        $this->markTestIncomplete();
         $fixture = new Task();
-        $fixture->setTitle('Value');
-        $fixture->setContent('Value');
-        $fixture->setCreatedAt('Value');
-        $fixture->setIsDone('Value');
-        $fixture->setDoneAt('Value');
-        $fixture->setUser('Value');
+        $fixture->setTitle('vValue');
+        $fixture->setContent('vValue');
+        $fixture->setCreatedAt(new \DateTime());
+        $fixture->setDone(false);
+        $fixture->setUser($this->userRepository->findAll()[0]);
 
         $this->manager->persist($fixture);
         $this->manager->flush();
 
-        $this->client->request('GET', sprintf('%s%s', $this->path, $fixture->getId()));
-        $this->client->submitForm('Delete');
+        $crawler = $this->client->request('GET', $this->path);
+
+        self::assertResponseStatusCodeSame(200);
+        self::assertPageTitleContains('Todo | Mes taches');
+        $this->client->submitForm('Supprimer');
 
         self::assertResponseRedirects('/task/');
         self::assertSame(0, $this->repository->count([]));
+    }
+
+    public function testValidate(): void
+    {
+        $fixture = new Task();
+        $fixture->setTitle('bValue');
+        $fixture->setContent('bValue');
+        $fixture->setCreatedAt(new \DateTime());
+        $fixture->setDone(false);
+        $fixture->setUser($this->userRepository->findAll()[0]);
+
+        $this->manager->persist($fixture);
+        $this->manager->flush();
+
+        $crawler = $this->client->request('GET', $this->path);
+
+        self::assertResponseStatusCodeSame(200);
+        self::assertPageTitleContains('Todo | Mes taches');
+        $this->client->submitForm('Valider');
+
+        self::assertResponseRedirects('/task/');
+        $this->assertTrue($this->repository->findAll()[0]->isDone());
+
     }
 }
