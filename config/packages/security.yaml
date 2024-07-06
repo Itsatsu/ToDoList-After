@@ -22,6 +22,7 @@ security:
                 enable_csrf: true
             logout:
                 path: app_logout
+            access_denied_handler: App\Security\AccessDeniedHandler
                 # where to redirect after logout
                 # target: app_any_route
                 # where to redirect after logout
@@ -38,6 +39,8 @@ security:
     access_control:
          - { path: ^/admin, roles: ROLE_ADMIN }
          - { path: ^/task/, roles: ROLE_USER }
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
 
 when@test:
     security:
