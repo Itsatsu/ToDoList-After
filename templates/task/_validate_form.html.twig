@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('app_task_validate', {'id': task.id}) }}">
+    <input type="hidden" name="_token" value="{{ csrf_token('validate' ~ task.id) }}">
+    <button class="btn btn-success">Valider</button>
+</form>

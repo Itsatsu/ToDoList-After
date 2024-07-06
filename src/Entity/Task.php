@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\TaskRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: TaskRepository::class)]
 class Task
@@ -15,9 +16,14 @@ class Task
     private ?int $id = null;
 
     #[ORM\Column(length: 150)]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3, max: 150)]
+
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3)]
     private ?string $content = null;
 
     #[ORM\Column(type: Types::DATETIMETZ_MUTABLE)]
@@ -30,8 +36,14 @@ class Task
     private ?\DateTimeInterface $doneAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'tasks')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?User $user = null;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+        $this->isDone = false;
+    }
 
     public function getId(): ?int
     {

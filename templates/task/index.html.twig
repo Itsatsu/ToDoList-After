@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Mes taches{% endblock %}
+
+{% block body %}
+    <div class="d-flex justify-content-between align-items-center flex-column flex-sm-row">
+        <h1 class="">Mes tâches</h1>
+        <a href="{{ path('app_task_new') }}" class="btn btn-primary">Ajouter une tache</a>
+    </div>
+
+    <div class="d-flex flex-column flex-xl-row justify-content-between flex-wrap align-items-start">
+
+        {% for task in tasks %}
+            <div class="card col-12 col-xl-5  m-2">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between flex-column flex-md-row align-items-start">
+                        <h5 class="card-title">{{ task.title }}</h5>
+                        {% if task.done %}
+                            <span class="badge rounded-pill bg-success">Terminé le: {{ task.doneAt | date ('d/m/Y') }}</span>
+                        {% else %}
+                            <span class="badge rounded-pill bg-warning">En cours</span>
+                        {% endif %}
+                    </div>
+
+                    <p class="card-text">{{ task.content }}</p>
+                    <p>Créer le: {{ task.createdAt|date('d/m/Y') }}</p>
+
+                    <div class="btn-group">
+                        {{ include('task/_delete_form.html.twig') }}
+                        {% if task.done == false %}
+                            <a href="{{ path('app_task_edit', {'id': task.id}) }}" class="btn btn-warning">Editer</a>
+                            {{ include('task/_validate_form.html.twig') }}
+                        {% endif %}
+                    </div>
+
+                </div>
+
+            </div>
+        {% else %}
+            <div>
+                <h3>Vous n'avez pas encore de tâche</h3>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
