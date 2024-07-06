@@ -36,8 +36,14 @@ class Task
     private ?\DateTimeInterface $doneAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'tasks')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?User $user = null;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+        $this->isDone = false;
+    }
 
     public function getId(): ?int
     {
