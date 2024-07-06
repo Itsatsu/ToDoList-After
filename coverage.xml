@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1720262947">
-  <project timestamp="1720262947">
+<coverage generated="1720263293">
+  <project timestamp="1720263293">
     <file name="C:\laragon\www\ToDoList-After\src\Controller\HomeController.php">
       <class name="App\Controller\HomeController" namespace="global">
         <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="8" coveredelements="8"/>
@@ -655,8 +655,8 @@
       <line num="45" type="stmt" count="0"/>
       <line num="46" type="stmt" count="0"/>
       <line num="50" type="stmt" count="0"/>
-      <metrics loc="55" ncloc="52" classes="1" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="8" elements="14" coveredelements="10"/>
+      <metrics loc="56" ncloc="53" classes="1" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="8" elements="14" coveredelements="10"/>
     </file>
-    <metrics files="24" loc="1599" ncloc="1395" classes="23" methods="84" coveredmethods="57" conditionals="0" coveredconditionals="0" statements="428" coveredstatements="297" elements="512" coveredelements="354"/>
+    <metrics files="24" loc="1600" ncloc="1396" classes="23" methods="84" coveredmethods="57" conditionals="0" coveredconditionals="0" statements="428" coveredstatements="297" elements="512" coveredelements="354"/>
   </project>
 </coverage>
