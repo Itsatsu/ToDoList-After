@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} admin | Liste des utilisateurs{% endblock %}
+
+{% block body %}
+    <h1>Liste des utilisateurs</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Nom</th>
+            <th scope="col">email</th>
+            <th scope="col">Roles</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr class="{% if user.roles[0] == "ROLE_ADMIN" %} table-primary {% else %} table-light {% endif %}">
+                <th scope="row">{{ user.id }}</th>
+                <td>{{ user.firstname }}</td>
+                <td>{{ user.lastname }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles | join(', ') }}</td>
+                <td>
+                    <div class="btn-group">
+                        {% if app.user == user or user.email == "anonyme@email.fr" %}
+                        <p>Vous ne pouvez pas modifier</p>
+                        {% else %}
+                            {{ include('user/_role_form.html.twig') }}
+                            {{ include('user/_delete_form.html.twig') }}
+                        {% endif %}
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
