@@ -17,6 +17,12 @@
                         <a class="nav-link {% if app.current_route == 'app_task_index' %} active {% endif %} "
                            href="{{ path('app_task_index') }}"><i class="fa-solid fa-tasks mx-1"></i>Mes tâches</a>
                     </li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item ">
+                            <a class="nav-link {% if app.current_route == 'app_user_index' %} active {% endif %} "
+                               href="{{ path('app_user_index') }}"><i class="fa-solid fa-users mx-1"></i>Utilisateurs</a>
+                        </li>
+                    {% endif %}
                 {% endif %}
             </ul>
 
