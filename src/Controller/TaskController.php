@@ -30,7 +30,8 @@ class TaskController extends AbstractController
     public function index(TaskRepository $taskRepository, UserRepository $userRepository, EntityManagerInterface $manager): Response
     {
         $user = $this->getUser();
-        $tasks = $taskRepository->findBy(['user' => $user], ['createdAt' => 'DESC']);
+        $tasks = $taskRepository->findBy(['user' => $user, 'isDone' => false], ['createdAt' => 'DESC']);
+        $endendTasks = $taskRepository->findBy(['user' => $user, 'isDone' => true], ['doneAt' => 'DESC']);
         if ($this->isGranted('ROLE_ADMIN')) {
 
             $noUserTasks = $taskRepository->findBy(['user' => null], ['createdAt' => 'DESC']);
@@ -44,10 +45,11 @@ class TaskController extends AbstractController
                 }
 
             }
-            $tasks = array_merge($tasks, $taskRepository->findBy(['user' => $anonymUser], ['createdAt' => 'DESC']));
-
+            $tasks = array_merge($tasks, $taskRepository->findBy(['user' => $anonymUser, 'isDone' => false], ['createdAt' => 'DESC']));
+            $endendTasks = array_merge($endendTasks, $taskRepository->findBy(['user' => $anonymUser, 'isDone' => true], ['doneAt' => 'DESC']));
         }
         return $this->render('task/index.html.twig', [
+            'endendTasks' => $endendTasks,
             'tasks' => $tasks
         ]);
     }
