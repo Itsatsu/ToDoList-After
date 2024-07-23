@@ -30,4 +30,10 @@ class HomeController extends AbstractController
             'tasks_done' => $tasksDone??null,
         ]);
     }
+
+    #[Route('/404', name: 'app_error_404')]
+    public function error404(): Response
+    {
+        return $this->render('home/404.html.twig');
+    }
 }

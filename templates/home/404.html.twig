@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}404{% endblock %}
+
+{% block body %}
+
+
+    <div class="d-flex align-items-center justify-content-center vh-100">
+        <div class="text-center">
+            <h1 class="display-1 fw-bold">404</h1>
+            <p class="fs-3"> <span class="text-danger">Opps!</span>Page non trouvé.</p>
+            <p class="lead">
+                La page que vous recherchez n'existe pas.
+            </p>
+            <a href="{{ path('app_home') }}" class="btn btn-primary">Retourner à l'accueil</a>
+        </div>
+    </div>
+
+
+
+{% endblock %}

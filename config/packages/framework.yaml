@@ -7,7 +7,7 @@ framework:
 
     # Note that the session will be started ONLY if you read or write from it.
     session: true
-
+    error_controller: 'App\Controller\HomeController::error404'
     #esi: true
     #fragments: true
 
