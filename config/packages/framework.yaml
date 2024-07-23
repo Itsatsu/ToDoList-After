@@ -1,0 +1,21 @@
+# see https://symfony.com/doc/current/reference/configuration/framework.html
+framework:
+    router:
+        http_port: 8000
+    secret: '%env(APP_SECRET)%'
+    #csrf_protection: true
+
+    # Note that the session will be started ONLY if you read or write from it.
+    session: true
+    error_controller: 'App\Controller\HomeController::error404'
+    #esi: true
+    #fragments: true
+
+when@test:
+    framework:
+        test: true
+        router:
+            http_port: 8000
+            https_port: 8000
+        session:
+            storage_factory_id: session.storage.factory.mock_file

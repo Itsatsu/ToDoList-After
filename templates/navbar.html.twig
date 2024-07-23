@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ path('app_home') }}">ToDo List</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!-- Link -->
+                <li class="nav-item ">
+                    <a class="nav-link {% if app.current_route == 'app_home' %} active {% endif %} "
+                       href="{{ path('app_home') }}"><i class="fa-solid fa-home mx-1"></i> {{ 'nav.home.link' |trans }}</a>
+                </li>
+                {% if app.user %}
+                    <li class="nav-item ">
+                        <a class="nav-link {% if app.current_route == 'app_task_index' %} active {% endif %} "
+                           href="{{ path('app_task_index') }}"><i class="fa-solid fa-tasks mx-1"></i>Mes tâches</a>
+                    </li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item ">
+                            <a class="nav-link {% if app.current_route == 'app_user_index' %} active {% endif %} "
+                               href="{{ path('app_user_index') }}"><i class="fa-solid fa-users mx-1"></i>Utilisateurs</a>
+                        </li>
+                    {% endif %}
+                {% endif %}
+            </ul>
+
+            <!-- Icons -->
+            <ul class="navbar-nav d-flex flex-row me-1">
+                {% if app.user %}
+                    <li class="nav-item me-3 me-lg-0"> {# TODO: Add profile link #}
+                        <a class="nav-link " href="#">
+                            <i class="fa-solid fa-user mx-1"></i>
+                            {{ 'nav.profile.link' |trans }}</a>
+                    </li>
+                    <li>
+                        <a class="nav-link " href="{{ path('app_logout') }}">
+                            <i class="fa-solid fa-right-from-bracket mx-1"></i>
+                            {{ 'logout' |trans }}</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item me-3 me-lg-0">
+                        <a class="nav-link " href="{{ path('app_login') }}">
+                            <i class="fa-solid fa-right-to-bracket mx-1"></i>
+                            {{ 'nav.login_register.link' |trans }}</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+

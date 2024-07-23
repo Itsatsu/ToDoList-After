@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'signin' | trans }}{% endblock %}
+
+{% block body %}
+    <form method="post">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+        <div class="mb-3">
+
+            <div class="d-flex justify-content-between align-items-center flex-column flex-md-row">
+                <h1 class="">{{ 'signin' | trans }}</h1>
+                <div>
+                <a class="" href="{{ path('app_register') }}">{{ 'login.to.register'|trans }}</a>
+                <a class="" href="{{ path('app_forgot_password_request') }}">{{ 'login.to.lost'|trans }}</a>
+                </div>
+            </div>
+            <label for="username">{{ 'email' | trans }}</label>
+            <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control"
+                   autocomplete="email" required autofocus>
+        </div>
+        <div class="mb-3">
+            <label for="password">{{ 'password' | trans }}</label>
+            <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password"
+                   required>
+
+
+        </div>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+        <div class="d-flex justify-content-around ">
+            <button class="btn btn-primary" type="submit">
+                {{ 'signin.button' |trans }}
+            </button>
+        </div>
+
+    </form>
+{% endblock %}
