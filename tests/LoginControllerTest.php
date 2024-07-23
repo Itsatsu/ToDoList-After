@@ -100,7 +100,12 @@ class LoginControllerTest extends WebTestCase
         self::assertResponseRedirects('/');
         $this->client->followRedirect();
 
-        self::assertSelectorNotExists('.alert-error');
+        self::assertSelectorNotExists('.alert-danger');
+        self::assertResponseIsSuccessful();
+
+        // 404
+        $this->client->request('GET', '/404');
+        self::assertPageTitleContains('Todo | 404');
         self::assertResponseIsSuccessful();
     }
 }

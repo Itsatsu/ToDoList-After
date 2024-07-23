@@ -19,16 +19,18 @@
     </php>
 
     <testsuites>
-        <testsuite name="Project Test Suite">
+        <testsuite name="Todo Test ">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
+
 
     <coverage processUncoveredFiles="true">
         <include>
             <directory suffix=".php">src</directory>
         </include>
         <exclude>
+            <directory>src/DataFixtures</directory>
             <directory>assets</directory>
             <directory>config</directory>
             <directory>public</directory>

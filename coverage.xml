@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1720628517">
-  <project timestamp="1720628517">
+<coverage generated="1721735241">
+  <project timestamp="1721735241">
     <file name="C:\laragon\www\ToDoList-After\src\Controller\HomeController.php">
       <class name="App\Controller\HomeController" namespace="global">
-        <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="8" coveredelements="8"/>
+        <metrics complexity="3" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="10" coveredelements="10"/>
       </class>
       <line num="21" type="method" name="index" visibility="public" complexity="2" crap="2" count="4"/>
       <line num="24" type="stmt" count="4"/>
@@ -13,7 +13,9 @@
       <line num="29" type="stmt" count="4"/>
       <line num="30" type="stmt" count="4"/>
       <line num="31" type="stmt" count="4"/>
-      <metrics loc="34" ncloc="26" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="8" coveredelements="8"/>
+      <line num="34" type="method" name="error404" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="37" type="stmt" count="1"/>
+      <metrics loc="40" ncloc="32" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="10" coveredelements="10"/>
     </file>
     <file name="C:\laragon\www\ToDoList-After\src\Controller\RegistrationController.php">
       <class name="App\Controller\RegistrationController" namespace="global">
@@ -254,77 +256,6 @@
       <line num="71" type="stmt" count="1"/>
       <line num="72" type="stmt" count="1"/>
       <metrics loc="78" ncloc="61" classes="1" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="16" elements="25" coveredelements="17"/>
-    </file>
-    <file name="C:\laragon\www\ToDoList-After\src\DataFixtures\TaskFixtures.php">
-      <class name="App\DataFixtures\TaskFixtures" namespace="global">
-        <metrics complexity="8" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="26" coveredstatements="0" elements="30" coveredelements="0"/>
-      </class>
-      <line num="13" type="method" name="load" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="16" type="stmt" count="0"/>
-      <line num="17" type="stmt" count="0"/>
-      <line num="20" type="stmt" count="0"/>
-      <line num="21" type="stmt" count="0"/>
-      <line num="24" type="stmt" count="0"/>
-      <line num="25" type="stmt" count="0"/>
-      <line num="28" type="stmt" count="0"/>
-      <line num="31" type="stmt" count="0"/>
-      <line num="34" type="method" name="createTasks" visibility="private" complexity="4" crap="20" count="0"/>
-      <line num="36" type="stmt" count="0"/>
-      <line num="37" type="stmt" count="0"/>
-      <line num="38" type="stmt" count="0"/>
-      <line num="39" type="stmt" count="0"/>
-      <line num="40" type="stmt" count="0"/>
-      <line num="41" type="stmt" count="0"/>
-      <line num="42" type="stmt" count="0"/>
-      <line num="44" type="stmt" count="0"/>
-      <line num="46" type="stmt" count="0"/>
-      <line num="50" type="method" name="createUnassignedTasks" visibility="private" complexity="2" crap="6" count="0"/>
-      <line num="52" type="stmt" count="0"/>
-      <line num="53" type="stmt" count="0"/>
-      <line num="54" type="stmt" count="0"/>
-      <line num="55" type="stmt" count="0"/>
-      <line num="56" type="stmt" count="0"/>
-      <line num="58" type="stmt" count="0"/>
-      <line num="62" type="method" name="getDependencies" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="64" type="stmt" count="0"/>
-      <line num="65" type="stmt" count="0"/>
-      <line num="66" type="stmt" count="0"/>
-      <metrics loc="69" ncloc="64" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="26" coveredstatements="0" elements="30" coveredelements="0"/>
-    </file>
-    <file name="C:\laragon\www\ToDoList-After\src\DataFixtures\UserFixtures.php">
-      <class name="App\DataFixtures\UserFixtures" namespace="global">
-        <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="27" coveredstatements="0" elements="29" coveredelements="0"/>
-      </class>
-      <line num="14" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="16" type="stmt" count="0"/>
-      <line num="19" type="method" name="load" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="22" type="stmt" count="0"/>
-      <line num="23" type="stmt" count="0"/>
-      <line num="24" type="stmt" count="0"/>
-      <line num="25" type="stmt" count="0"/>
-      <line num="26" type="stmt" count="0"/>
-      <line num="27" type="stmt" count="0"/>
-      <line num="28" type="stmt" count="0"/>
-      <line num="30" type="stmt" count="0"/>
-      <line num="31" type="stmt" count="0"/>
-      <line num="33" type="stmt" count="0"/>
-      <line num="34" type="stmt" count="0"/>
-      <line num="35" type="stmt" count="0"/>
-      <line num="36" type="stmt" count="0"/>
-      <line num="37" type="stmt" count="0"/>
-      <line num="38" type="stmt" count="0"/>
-      <line num="39" type="stmt" count="0"/>
-      <line num="40" type="stmt" count="0"/>
-      <line num="41" type="stmt" count="0"/>
-      <line num="42" type="stmt" count="0"/>
-      <line num="43" type="stmt" count="0"/>
-      <line num="44" type="stmt" count="0"/>
-      <line num="45" type="stmt" count="0"/>
-      <line num="46" type="stmt" count="0"/>
-      <line num="47" type="stmt" count="0"/>
-      <line num="48" type="stmt" count="0"/>
-      <line num="51" type="stmt" count="0"/>
-      <metrics loc="54" ncloc="51" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="27" coveredstatements="0" elements="29" coveredelements="0"/>
     </file>
     <file name="C:\laragon\www\ToDoList-After\src\Entity\ResetPasswordRequest.php">
       <class name="App\Entity\ResetPasswordRequest" namespace="global">
@@ -680,6 +611,6 @@
       <line num="50" type="stmt" count="0"/>
       <metrics loc="56" ncloc="53" classes="1" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="8" elements="14" coveredelements="10"/>
     </file>
-    <metrics files="24" loc="1652" ncloc="1436" classes="23" methods="86" coveredmethods="59" conditionals="0" coveredconditionals="0" statements="449" coveredstatements="317" elements="535" coveredelements="376"/>
+    <metrics files="22" loc="1535" ncloc="1327" classes="21" methods="81" coveredmethods="60" conditionals="0" coveredconditionals="0" statements="397" coveredstatements="318" elements="478" coveredelements="378"/>
   </project>
 </coverage>

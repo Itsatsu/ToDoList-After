@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for C:\laragon\www\ToDoList-After\src</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="_css/bootstrap.min.css?v=9.2.31" rel="stylesheet" type="text/css">
+  <link href="_css/nv.d3.min.css?v=9.2.31" rel="stylesheet" type="text/css">
+  <link href="_css/style.css?v=9.2.31" rel="stylesheet" type="text/css">
+  <link href="_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="index.html">C:\laragon\www\ToDoList-After\src</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Repository/UserRepository.php.html#15">App\Repository\UserRepository</a></td><td class="text-right">16%</td></tr>
+       <tr><td><a href="Security/AccessDeniedHandler.php.html#11">App\Security\AccessDeniedHandler</a></td><td class="text-right">33%</td></tr>
+       <tr><td><a href="Controller/RegistrationController.php.html#21">App\Controller\RegistrationController</a></td><td class="text-right">58%</td></tr>
+       <tr><td><a href="Controller/SecurityController.php.html#11">App\Controller\SecurityController</a></td><td class="text-right">70%</td></tr>
+       <tr><td><a href="Entity/User.php.html#14">App\Entity\User</a></td><td class="text-right">71%</td></tr>
+       <tr><td><a href="Security/EmailVerifier.php.html#13">App\Security\EmailVerifier</a></td><td class="text-right">72%</td></tr>
+       <tr><td><a href="Controller/UserController.php.html#13">App\Controller\UserController</a></td><td class="text-right">72%</td></tr>
+       <tr><td><a href="Voter/TaskVoter.php.html#11">App\Voter\TaskVoter</a></td><td class="text-right">72%</td></tr>
+       <tr><td><a href="Entity/ResetPasswordRequest.php.html#10">App\Entity\ResetPasswordRequest</a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Controller/TaskController.php.html#16">App\Controller\TaskController</a></td><td class="text-right">79%</td></tr>
+       <tr><td><a href="Controller/ResetPasswordController.php.html#24">App\Controller\ResetPasswordController</a></td><td class="text-right">80%</td></tr>
+       <tr><td><a href="EventListener/CheckVerifiedUserListener.php.html#13">App\EventListener\CheckVerifiedUserListener</a></td><td class="text-right">83%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Entity/User.php.html#14">App\Entity\User</a></td><td class="text-right">37</td></tr>
+       <tr><td><a href="Controller/RegistrationController.php.html#21">App\Controller\RegistrationController</a></td><td class="text-right">19</td></tr>
+       <tr><td><a href="Controller/TaskController.php.html#16">App\Controller\TaskController</a></td><td class="text-right">15</td></tr>
+       <tr><td><a href="Controller/ResetPasswordController.php.html#24">App\Controller\ResetPasswordController</a></td><td class="text-right">14</td></tr>
+       <tr><td><a href="Controller/UserController.php.html#13">App\Controller\UserController</a></td><td class="text-right">10</td></tr>
+       <tr><td><a href="Voter/TaskVoter.php.html#11">App\Voter\TaskVoter</a></td><td class="text-right">10</td></tr>
+       <tr><td><a href="Repository/UserRepository.php.html#15">App\Repository\UserRepository</a></td><td class="text-right">8</td></tr>
+       <tr><td><a href="Controller/SecurityController.php.html#11">App\Controller\SecurityController</a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="EventListener/CheckVerifiedUserListener.php.html#13">App\EventListener\CheckVerifiedUserListener</a></td><td class="text-right">3</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Controller/RegistrationController.php.html#81"><abbr title="App\Controller\RegistrationController::verifyUserEmail">verifyUserEmail</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/SecurityController.php.html#32"><abbr title="App\Controller\SecurityController::logout">logout</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/ResetPasswordRequest.php.html#30"><abbr title="App\Entity\ResetPasswordRequest::getId">getId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/Task.php.html#101"><abbr title="App\Entity\Task::getDoneAt">getDoneAt</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/User.php.html#199"><abbr title="App\Entity\User::setLocale">setLocale</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/User.php.html#209"><abbr title="App\Entity\User::getTasks">getTasks</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/User.php.html#214"><abbr title="App\Entity\User::addTask">addTask</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Entity/User.php.html#224"><abbr title="App\Entity\User::removeTask">removeTask</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Repository/UserRepository.php.html#25"><abbr title="App\Repository\UserRepository::upgradePassword">upgradePassword</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/AccessDeniedHandler.php.html#20"><abbr title="App\Security\AccessDeniedHandler::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Security/EmailVerifier.php.html#44"><abbr title="App\Security\EmailVerifier::handleEmailConfirmation">handleEmailConfirmation</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/TaskController.php.html#29"><abbr title="App\Controller\TaskController::index">index</abbr></a></td><td class="text-right">47%</td></tr>
+       <tr><td><a href="Voter/TaskVoter.php.html#34"><abbr title="App\Voter\TaskVoter::voteOnAttribute">voteOnAttribute</abbr></a></td><td class="text-right">57%</td></tr>
+       <tr><td><a href="Controller/UserController.php.html#37"><abbr title="App\Controller\UserController::delete">delete</abbr></a></td><td class="text-right">60%</td></tr>
+       <tr><td><a href="Controller/TaskController.php.html#120"><abbr title="App\Controller\TaskController::delete">delete</abbr></a></td><td class="text-right">71%</td></tr>
+       <tr><td><a href="Controller/ResetPasswordController.php.html#60"><abbr title="App\Controller\ResetPasswordController::reset">reset</abbr></a></td><td class="text-right">73%</td></tr>
+       <tr><td><a href="Controller/UserController.php.html#61"><abbr title="App\Controller\UserController::role">role</abbr></a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Controller/SecurityController.php.html#13"><abbr title="App\Controller\SecurityController::login">login</abbr></a></td><td class="text-right">77%</td></tr>
+       <tr><td><a href="Controller/ResetPasswordController.php.html#119"><abbr title="App\Controller\ResetPasswordController::processSendingPasswordResetEmail">processSendingPasswordResetEmail</abbr></a></td><td class="text-right">78%</td></tr>
+       <tr><td><a href="EventListener/CheckVerifiedUserListener.php.html#15"><abbr title="App\EventListener\CheckVerifiedUserListener::onCheckPassportEvent">onCheckPassportEvent</abbr></a></td><td class="text-right">83%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Controller/RegistrationController.php.html#81"><abbr title="App\Controller\RegistrationController::verifyUserEmail">verifyUserEmail</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Entity/User.php.html#224"><abbr title="App\Entity\User::removeTask">removeTask</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Voter/TaskVoter.php.html#34"><abbr title="App\Voter\TaskVoter::voteOnAttribute">voteOnAttribute</abbr></a></td><td class="text-right">8</td></tr>
+       <tr><td><a href="Controller/ResetPasswordController.php.html#60"><abbr title="App\Controller\ResetPasswordController::reset">reset</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controller/TaskController.php.html#29"><abbr title="App\Controller\TaskController::index">index</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Entity/User.php.html#214"><abbr title="App\Entity\User::addTask">addTask</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Repository/UserRepository.php.html#25"><abbr title="App\Repository\UserRepository::upgradePassword">upgradePassword</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controller/UserController.php.html#37"><abbr title="App\Controller\UserController::delete">delete</abbr></a></td><td class="text-right">5</td></tr>
+       <tr><td><a href="Controller/UserController.php.html#61"><abbr title="App\Controller\UserController::role">role</abbr></a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="Controller/ResetPasswordController.php.html#119"><abbr title="App\Controller\ResetPasswordController::processSendingPasswordResetEmail">processSendingPasswordResetEmail</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="EventListener/CheckVerifiedUserListener.php.html#15"><abbr title="App\EventListener\CheckVerifiedUserListener::onCheckPassportEvent">onCheckPassportEvent</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Controller/TaskController.php.html#120"><abbr title="App\Controller\TaskController::delete">delete</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="Controller/SecurityController.php.html#13"><abbr title="App\Controller\SecurityController::login">login</abbr></a></td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 9.2.31</a> using <a href="https://secure.php.net/" target="_top">PHP 8.3.8</a> and <a href="https://phpunit.de/">PHPUnit 9.6.19</a> at Tue Jul 23 11:47:41 UTC 2024.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="_js/jquery.min.js?v=9.2.31" type="text/javascript"></script>
+  <script src="_js/d3.min.js?v=9.2.31" type="text/javascript"></script>
+  <script src="_js/nv.d3.min.js?v=9.2.31" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([0,0,1,0,1,0,1,0,7,2,1,9], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([11,0,0,0,0,1,1,1,5,1,1,60], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[100,3,"<a href=\"Controller\/HomeController.php.html#10\">App\\Controller\\HomeController<\/a>"],[58.139534883720934,11,"<a href=\"Controller\/RegistrationController.php.html#21\">App\\Controller\\RegistrationController<\/a>"],[80,13,"<a href=\"Controller\/ResetPasswordController.php.html#24\">App\\Controller\\ResetPasswordController<\/a>"],[70,3,"<a href=\"Controller\/SecurityController.php.html#11\">App\\Controller\\SecurityController<\/a>"],[79.24528301886792,14,"<a href=\"Controller\/TaskController.php.html#16\">App\\Controller\\TaskController<\/a>"],[72.72727272727273,9,"<a href=\"Controller\/UserController.php.html#13\">App\\Controller\\UserController<\/a>"],[75,3,"<a href=\"Entity\/ResetPasswordRequest.php.html#10\">App\\Entity\\ResetPasswordRequest<\/a>"],[95.23809523809523,14,"<a href=\"Entity\/Task.php.html#10\">App\\Entity\\Task<\/a>"],[71.42857142857143,24,"<a href=\"Entity\/User.php.html#14\">App\\Entity\\User<\/a>"],[83.33333333333334,3,"<a href=\"EventListener\/CheckVerifiedUserListener.php.html#13\">App\\EventListener\\CheckVerifiedUserListener<\/a>"],[100,3,"<a href=\"EventListener\/UserLocaleListener.php.html#12\">App\\EventListener\\UserLocaleListener<\/a>"],[100,2,"<a href=\"Form\/ChangePasswordFormType.php.html#16\">App\\Form\\ChangePasswordFormType<\/a>"],[100,2,"<a href=\"Form\/RegistrationFormType.php.html#19\">App\\Form\\RegistrationFormType<\/a>"],[100,2,"<a href=\"Form\/ResetPasswordRequestFormType.php.html#12\">App\\Form\\ResetPasswordRequestFormType<\/a>"],[100,2,"<a href=\"Form\/TaskType.php.html#14\">App\\Form\\TaskType<\/a>"],[100,0,"<a href=\"Kernel.php.html#8\">App\\Kernel<\/a>"],[100,2,"<a href=\"Repository\/ResetPasswordRequestRepository.php.html#16\">App\\Repository\\ResetPasswordRequestRepository<\/a>"],[100,1,"<a href=\"Repository\/TaskRepository.php.html#12\">App\\Repository\\TaskRepository<\/a>"],[16.666666666666664,3,"<a href=\"Repository\/UserRepository.php.html#15\">App\\Repository\\UserRepository<\/a>"],[33.33333333333333,2,"<a href=\"Security\/AccessDeniedHandler.php.html#11\">App\\Security\\AccessDeniedHandler<\/a>"],[72.22222222222221,3,"<a href=\"Security\/EmailVerifier.php.html#13\">App\\Security\\EmailVerifier<\/a>"],[72.72727272727273,9,"<a href=\"Voter\/TaskVoter.php.html#11\">App\\Voter\\TaskVoter<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[100,2,"<a href=\"Controller\/HomeController.php.html#21\">App\\Controller\\HomeController::index<\/a>"],[100,1,"<a href=\"Controller\/HomeController.php.html#34\">App\\Controller\\HomeController::error404<\/a>"],[100,1,"<a href=\"Controller\/RegistrationController.php.html#26\">App\\Controller\\RegistrationController::__construct<\/a>"],[92.3076923076923,4,"<a href=\"Controller\/RegistrationController.php.html#33\">App\\Controller\\RegistrationController::register<\/a>"],[0,6,"<a href=\"Controller\/RegistrationController.php.html#81\">App\\Controller\\RegistrationController::verifyUserEmail<\/a>"],[100,1,"<a href=\"Controller\/ResetPasswordController.php.html#29\">App\\Controller\\ResetPasswordController::__construct<\/a>"],[100,3,"<a href=\"Controller\/ResetPasswordController.php.html#38\">App\\Controller\\ResetPasswordController::request<\/a>"],[73.33333333333333,6,"<a href=\"Controller\/ResetPasswordController.php.html#60\">App\\Controller\\ResetPasswordController::reset<\/a>"],[78.26086956521739,3,"<a href=\"Controller\/ResetPasswordController.php.html#119\">App\\Controller\\ResetPasswordController::processSendingPasswordResetEmail<\/a>"],[77.77777777777779,2,"<a href=\"Controller\/SecurityController.php.html#13\">App\\Controller\\SecurityController::login<\/a>"],[0,1,"<a href=\"Controller\/SecurityController.php.html#32\">App\\Controller\\SecurityController::logout<\/a>"],[47.05882352941176,4,"<a href=\"Controller\/TaskController.php.html#29\">App\\Controller\\TaskController::index<\/a>"],[100,3,"<a href=\"Controller\/TaskController.php.html#64\">App\\Controller\\TaskController::new<\/a>"],[100,3,"<a href=\"Controller\/TaskController.php.html#93\">App\\Controller\\TaskController::edit<\/a>"],[71.42857142857143,2,"<a href=\"Controller\/TaskController.php.html#120\">App\\Controller\\TaskController::delete<\/a>"],[100,2,"<a href=\"Controller\/TaskController.php.html#142\">App\\Controller\\TaskController::validate<\/a>"],[100,1,"<a href=\"Controller\/UserController.php.html#21\">App\\Controller\\UserController::index<\/a>"],[60,4,"<a href=\"Controller\/UserController.php.html#37\">App\\Controller\\UserController::delete<\/a>"],[75,4,"<a href=\"Controller\/UserController.php.html#61\">App\\Controller\\UserController::role<\/a>"],[100,1,"<a href=\"Entity\/ResetPasswordRequest.php.html#24\">App\\Entity\\ResetPasswordRequest::__construct<\/a>"],[0,1,"<a href=\"Entity\/ResetPasswordRequest.php.html#30\">App\\Entity\\ResetPasswordRequest::getId<\/a>"],[100,1,"<a href=\"Entity\/ResetPasswordRequest.php.html#35\">App\\Entity\\ResetPasswordRequest::getUser<\/a>"],[100,1,"<a href=\"Entity\/Task.php.html#42\">App\\Entity\\Task::__construct<\/a>"],[100,1,"<a href=\"Entity\/Task.php.html#48\">App\\Entity\\Task::getId<\/a>"],[100,1,"<a href=\"Entity\/Task.php.html#53\">App\\Entity\\Task::getTitle<\/a>"],[100,1,"<a href=\"Entity\/Task.php.html#58\">App\\Entity\\Task::setTitle<\/a>"],[100,1,"<a href=\"Entity\/Task.php.html#65\">App\\Entity\\Task::getContent<\/a>"],[100,1,"<a href=\"Entity\/Task.php.html#70\">App\\Entity\\Task::setContent<\/a>"],[100,1,"<a href=\"Entity\/Task.php.html#77\">App\\Entity\\Task::getCreatedAt<\/a>"],[100,1,"<a href=\"Entity\/Task.php.html#82\">App\\Entity\\Task::setCreatedAt<\/a>"],[100,1,"<a href=\"Entity\/Task.php.html#89\">App\\Entity\\Task::isDone<\/a>"],[100,1,"<a href=\"Entity\/Task.php.html#94\">App\\Entity\\Task::setDone<\/a>"],[0,1,"<a href=\"Entity\/Task.php.html#101\">App\\Entity\\Task::getDoneAt<\/a>"],[100,1,"<a href=\"Entity\/Task.php.html#106\">App\\Entity\\Task::setDoneAt<\/a>"],[100,1,"<a href=\"Entity\/Task.php.html#113\">App\\Entity\\Task::getUser<\/a>"],[100,1,"<a href=\"Entity\/Task.php.html#118\">App\\Entity\\Task::setUser<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#78\">App\\Entity\\User::__construct<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#83\">App\\Entity\\User::getId<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#88\">App\\Entity\\User::getEmail<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#93\">App\\Entity\\User::setEmail<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#105\">App\\Entity\\User::getUserIdentifier<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#115\">App\\Entity\\User::getRoles<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#127\">App\\Entity\\User::setRoles<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#137\">App\\Entity\\User::getPassword<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#142\">App\\Entity\\User::setPassword<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#152\">App\\Entity\\User::eraseCredentials<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#158\">App\\Entity\\User::getFirstname<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#163\">App\\Entity\\User::setFirstname<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#170\">App\\Entity\\User::getLastname<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#175\">App\\Entity\\User::setLastname<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#182\">App\\Entity\\User::isVerified<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#187\">App\\Entity\\User::setVerified<\/a>"],[100,1,"<a href=\"Entity\/User.php.html#194\">App\\Entity\\User::getLocale<\/a>"],[0,1,"<a href=\"Entity\/User.php.html#199\">App\\Entity\\User::setLocale<\/a>"],[0,1,"<a href=\"Entity\/User.php.html#209\">App\\Entity\\User::getTasks<\/a>"],[0,2,"<a href=\"Entity\/User.php.html#214\">App\\Entity\\User::addTask<\/a>"],[0,3,"<a href=\"Entity\/User.php.html#224\">App\\Entity\\User::removeTask<\/a>"],[83.33333333333334,3,"<a href=\"EventListener\/CheckVerifiedUserListener.php.html#15\">App\\EventListener\\CheckVerifiedUserListener::onCheckPassportEvent<\/a>"],[100,1,"<a href=\"EventListener\/UserLocaleListener.php.html#14\">App\\EventListener\\UserLocaleListener::__construct<\/a>"],[100,2,"<a href=\"EventListener\/UserLocaleListener.php.html#22\">App\\EventListener\\UserLocaleListener::onKernelRequest<\/a>"],[100,1,"<a href=\"Form\/ChangePasswordFormType.php.html#18\">App\\Form\\ChangePasswordFormType::buildForm<\/a>"],[100,1,"<a href=\"Form\/ChangePasswordFormType.php.html#55\">App\\Form\\ChangePasswordFormType::configureOptions<\/a>"],[100,1,"<a href=\"Form\/RegistrationFormType.php.html#21\">App\\Form\\RegistrationFormType::buildForm<\/a>"],[100,1,"<a href=\"Form\/RegistrationFormType.php.html#58\">App\\Form\\RegistrationFormType::configureOptions<\/a>"],[100,1,"<a href=\"Form\/ResetPasswordRequestFormType.php.html#14\">App\\Form\\ResetPasswordRequestFormType::buildForm<\/a>"],[100,1,"<a href=\"Form\/ResetPasswordRequestFormType.php.html#29\">App\\Form\\ResetPasswordRequestFormType::configureOptions<\/a>"],[100,1,"<a href=\"Form\/TaskType.php.html#16\">App\\Form\\TaskType::buildForm<\/a>"],[100,1,"<a href=\"Form\/TaskType.php.html#28\">App\\Form\\TaskType::configureOptions<\/a>"],[100,1,"<a href=\"Repository\/ResetPasswordRequestRepository.php.html#20\">App\\Repository\\ResetPasswordRequestRepository::__construct<\/a>"],[100,1,"<a href=\"Repository\/ResetPasswordRequestRepository.php.html#28\">App\\Repository\\ResetPasswordRequestRepository::createResetPasswordRequest<\/a>"],[100,1,"<a href=\"Repository\/TaskRepository.php.html#14\">App\\Repository\\TaskRepository::__construct<\/a>"],[100,1,"<a href=\"Repository\/UserRepository.php.html#17\">App\\Repository\\UserRepository::__construct<\/a>"],[0,2,"<a href=\"Repository\/UserRepository.php.html#25\">App\\Repository\\UserRepository::upgradePassword<\/a>"],[100,1,"<a href=\"Security\/AccessDeniedHandler.php.html#15\">App\\Security\\AccessDeniedHandler::__construct<\/a>"],[0,1,"<a href=\"Security\/AccessDeniedHandler.php.html#20\">App\\Security\\AccessDeniedHandler::handle<\/a>"],[100,1,"<a href=\"Security\/EmailVerifier.php.html#15\">App\\Security\\EmailVerifier::__construct<\/a>"],[100,1,"<a href=\"Security\/EmailVerifier.php.html#22\">App\\Security\\EmailVerifier::sendEmailConfirmation<\/a>"],[0,1,"<a href=\"Security\/EmailVerifier.php.html#44\">App\\Security\\EmailVerifier::handleEmailConfirmation<\/a>"],[100,1,"<a href=\"Voter\/TaskVoter.php.html#21\">App\\Voter\\TaskVoter::__construct<\/a>"],[100,2,"<a href=\"Voter\/TaskVoter.php.html#27\">App\\Voter\\TaskVoter::supports<\/a>"],[57.14285714285714,6,"<a href=\"Voter\/TaskVoter.php.html#34\">App\\Voter\\TaskVoter::voteOnAttribute<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>
