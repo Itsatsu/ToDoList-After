@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Repository\UserRepository;
+use App\Form\UserFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -50,6 +51,28 @@ class UserController extends AbstractController
         }
         $this->addFlash('danger', 'Vous ne pouvez pas supprimer cet utilisateur.');
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    /**
+     * Formulaire pour éditer un utilisateur
+     * @param User $user
+     *
+     */
+    #[Route('/admin/user/{id}/edit', name: 'app_user_edit')]
+    public function edit(Request $request, User $user, EntityManagerInterface $entityManager,): Response
+    {
+        $form = $this->createForm(UserFormType::class, $user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+            $this->addFlash('success', "L'utilisateur a été modifié avec succès.");
+            return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+        }
+        return $this->render('user/edit.html.twig', [
+            'user' => $user,
+            'form' => $form
+        ]);
+
     }
 
 

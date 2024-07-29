@@ -50,8 +50,9 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés sur 
    ```yarn dev```
 9. Lancez le serveur avec la commande suivante :
    ```symfony serve```
-
-10. Vous pouvez accéder à l'index du projet via l'URL suivante :
+10. Lancez le worker pour les messages (mail asynchrone) avec la commande suivante :
+```php bin/console messenger:consume -vv ```
+11. Vous pouvez accéder à l'index du projet via l'URL suivante :
    ```http://IpDuServeur:8000/```
 
 
