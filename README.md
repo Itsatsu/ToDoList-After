@@ -6,8 +6,14 @@ Le but de ce projet est de reprendre un projet existant et de le corriger, l'am�
 
 ### Contexte du projet
 
-Todo
+Votre rôle ici est donc d’améliorer la qualité de l’application. La qualité est un concept qui englobe bon nombre de sujets : on parle souvent de qualité de code, mais il y a également la qualité perçue par l’utilisateur de l’application ou encore la qualité perçue par les collaborateurs de l’entreprise, et enfin la qualité que vous percevez lorsqu’il vous faut travailler sur le projet.
 
+Ainsi, pour ce dernier projet de spécialisation, vous êtes dans la peau d’un développeur expérimenté en charge des tâches suivantes :
+
+l’implémentation de nouvelles fonctionnalités ;
+la correction de quelques anomalies ;
+et l’implémentation de tests automatisés.
+Il vous est également demandé d’analyser le projet grâce à des outils vous permettant d’avoir une vision d’ensemble de la qualité du code et des différents axes de performance de l’application.
 
 ## Fichier présent dans le projet
 - schema de base de donnée
