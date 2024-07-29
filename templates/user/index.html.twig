@@ -25,9 +25,15 @@
                 <td>{{ user.roles | join(', ') }}</td>
                 <td>
                     <div class="btn-group">
+
                         {% if app.user == user or user.email == "anonyme@email.fr" %}
-                        <p>Vous ne pouvez pas modifier</p>
+                            {% if user.email != "anonyme@email.fr" %}
+                                <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-primary">Editer</a>
+                            {% else %}
+                            <p>Vous ne pouvez pas modifier</p>
+                            {% endif %}
                         {% else %}
+                            <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-primary">Editer</a>
                             {{ include('user/_role_form.html.twig') }}
                             {{ include('user/_delete_form.html.twig') }}
                         {% endif %}

@@ -1,5 +1,5 @@
 # TODO & Co
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/d2e38e48c599428f9a3cab2d433462bc)](https://app.codacy.com/gh/Itsatsu/ToDoList-After/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade) [![Maintainability](https://api.codeclimate.com/v1/badges/7e77d5a17342b9bd5770/maintainability)](https://codeclimate.com/github/Itsatsu/ToDoList-After/maintainability)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/d2e38e48c599428f9a3cab2d433462bc)](https://app.codacy.com/gh/Itsatsu/ToDoList-After/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade) [![Maintainability](https://api.codeclimate.com/v1/badges/7e77d5a17342b9bd5770/maintainability)](https://codeclimate.com/github/Itsatsu/ToDoList-After/maintainability) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Itsatsu_ToDoList-After&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Itsatsu_ToDoList-After) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Itsatsu_ToDoList-After&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Itsatsu_ToDoList-After)
 
 Ceci est un projet pour le parcours de formation [Développeur d'application PHP/Symfony sur Openclassroom](https://openclassrooms.com/fr/paths/59-developpeur-dapplication-php-symfony).
 Le but de ce projet est de reprendre un projet existant et de le corriger, l'améliorer et le documenter.
@@ -50,8 +50,9 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés sur 
    ```yarn dev```
 9. Lancez le serveur avec la commande suivante :
    ```symfony serve```
-
-10. Vous pouvez accéder à l'index du projet via l'URL suivante :
+10. Lancez le worker pour les messages (mail asynchrone) avec la commande suivante :
+```php bin/console messenger:consume -vv ```
+11. Vous pouvez accéder à l'index du projet via l'URL suivante :
    ```http://IpDuServeur:8000/```
 
 
