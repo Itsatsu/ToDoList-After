@@ -4,7 +4,7 @@
 Ceci est un projet pour le parcours de formation [Développeur d'application PHP/Symfony sur Openclassroom](https://openclassrooms.com/fr/paths/59-developpeur-dapplication-php-symfony).
 Le but de ce projet est de reprendre un projet existant et de le corriger, l'améliorer et le documenter.
 
-### Contexte du projet
+## Contexte du projet
 
 Votre rôle ici est donc d’améliorer la qualité de l’application. La qualité est un concept qui englobe bon nombre de sujets : on parle souvent de qualité de code, mais il y a également la qualité perçue par l’utilisateur de l’application ou encore la qualité perçue par les collaborateurs de l’entreprise, et enfin la qualité que vous percevez lorsqu’il vous faut travailler sur le projet.
 
